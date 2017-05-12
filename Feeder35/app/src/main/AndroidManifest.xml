@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bhatore.android.feeder35">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:icon="@mipmap/aaa"
+        android:label="Feeder"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".loginpage"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="Feeder">
+
+            <!-- android:theme="@style/AppTheme.NoActionBar"> -->
+        </activity>
+        <activity
+            android:name=".studentmain"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".feedback"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".submissions"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_submissions"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

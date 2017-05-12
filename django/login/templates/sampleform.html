@@ -1,0 +1,22 @@
+  {% load staticfiles %}
+<html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/datedropper.js' %}"></script>
+        
+        <link type="text/css" rel="stylesheet" href="{% static 'css/datedropper.css' %}"  media="screen,projection"/>        
+      <!--Import materialize.css-->
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <form action="{% url 'adminpage' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+    </body>
+<script>$( ".departure" ).dateDropper();</script>
+</html>

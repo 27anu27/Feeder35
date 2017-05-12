@@ -1,0 +1,258 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Feeder</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/animate.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/datedropper.min.css' %}" rel="stylesheet" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/light-bootstrap-dashboard.css' %}" rel="stylesheet"/>
+    <style>
+        input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
+         { -webkit-appearance: none; margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="black" data-image="{% static 'assets/img/sidebar-5.jpg' %}">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Feeder
+                </a>
+            </div>
+
+               <ul class="nav">
+                <li >
+                    <a href="{% url 'add_assignment_deadline' %}">
+                        <i class="pe-7s-user"></i>
+                        <p>Add Assignment</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'viewdeadline' %}">
+                        <i class="pe-7s-user"></i>
+                        <p>View Deadlines</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'inputtype' %}">
+                        <i class="pe-7s-user"></i>
+                        <p>Add feedback</p>
+                    </a>
+                </li>
+<li >
+                    <a href="{% url 'feedbackcourse' %}">
+                        <i class="pe-7s-user"></i>
+                        <p>View Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="pe-7s-user"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title" style="font-weight:700">Deadlines</h4>
+                            </div>
+                            <div class="content">
+                                 <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Upcoming Feedback deadlines</h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <th>Course name</th>
+                                        <th>Course_ID</th>
+                                        <th>Submission Date</th>
+                                        <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                    {% for field in Upcomingfeedbackdeadlines %}
+                                        <tr>
+                                            <td>{{field.feedback.course_name}}</td>
+                                            <td>{{field.feedback.course_code}}</td>
+                                            <td>{{field.feedback_submission_date}}</td>
+                                            <td>{{field.feedback_type}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+
+                                            <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Old Feedback deadlines</h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <th>Course name</th>
+                                        <th>Course_ID</th>
+                                        <th>Submission Date</th>
+                                        <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    {% for field in Oldfeedbackdeadlines %}
+                                        <tr>
+                                            <td>{{field.feedback.course_name}}</td>
+                                            <td>{{field.feedback.course_code}}</td>
+                                            <td>{{field.feedback_submission_date}}</td>
+                                            <td>{{field.feedback_type}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                                                  <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Upcoming Assignment Deadlines</h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <th>Course name</th>
+                                        <th>Course_ID</th>
+                                        <th>Submission Date</th>
+                                        <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    {% for field in Upcomingasignmentdeadlines %}
+                                        <tr>
+                                            <td>{{field.assignment.course_name}}</td>
+                                            <td>{{field.assignment.course_code}}</td>
+                                            <td>{{field.assignment_submission_date}}</td>
+                                            <td>{{field.assignment_description}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                                                      <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Old Assignment Deadlines</h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <th>Course name</th>
+                                        <th>Course_ID</th>
+                                        <th>Submission Date</th>
+                                        <th>Description</th>
+                                    </thead>
+                                    <tbody>
+                                    
+                                    {% for field in Oldassignmentdeadlines %}
+                                        <tr>
+                                            <td>{{field.assignment.course_name}}</td>
+                                            <td>{{field.assignment.course_code}}</td>
+                                            <td>{{field.assignment_submission_date}}</td>
+                                            <td>{{field.assignment_description}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                            </div>
+                        </div>
+                        <ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+    <script src="{% static 'assets/js/jquery-1.10.2.js' %}" type="text/javascript"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/js/datedropper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-notify.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-checkbox-radio-switch.js' %}"></script>
+	<script src="{% static 'assets/js/light-bootstrap-dashboard.js' %}"></script>
+	<script src="{% static 'assets/js/demo.js' %}"></script>
+    <script>$( ".datepicker" ).dateDropper();</script>
+
+    {% if course_registered %}
+    <script type="text/javascript">
+    	$(document).ready(function(){
+
+        	demo.initChartist();
+
+        	$.notify({
+            	icon: 'pe-7s-gift',
+            	message: "Course Registered"
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+    	});
+	</script>
+    {% endif %}
+
+
+
+
+</html>

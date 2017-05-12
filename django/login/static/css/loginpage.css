@@ -1,0 +1,56 @@
+html, body
+{
+        margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		vertical-align: baseline;
+        overflow-x: hidden;
+
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+html 
+{
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+        
+
+ul
+{
+    overflow:hidden;
+}
+.row
+{
+    margin: 0%;
+    padding: 0%;
+}
+.height
+{
+    padding:3%;
+}
+button
+{
+    margin-top: 2%;
+}
+form
+{
+    margin-top: 2%;
+    
+}
+.bar
+{
+    color: #ddd;
+    font-weight: 700;
+    letter-spacing: 5px;
+    font-size: 25px;
+}
+input:-webkit-autofill {
+    background-color:white !important;
+    color:white !important;
+}
+.error
+{
+    color: red;
+}

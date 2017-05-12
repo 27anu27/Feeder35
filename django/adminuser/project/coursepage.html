@@ -1,0 +1,74 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+    <nav>
+            <div class="nav-wrapper  blue lighten-1">
+            <a href="#" class="brand-logo center">Welcome To Feedr</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            </div>
+    </nav>
+    <h1 align="center" class="orange-text text-darken-3">CS-207:Discrete Structures</h1>
+    <div class="row">
+              <ul style="font-size:160%;">
+              <li><b>Teacher:</b> Prof. Akshay SS</li>
+              <li><b>Students Enrolled:</b> 120 </li>
+              <li><b>Time Slot:</b> 3</li>
+              <li><b>Class Venue:</b> LC-101</li>
+              </ul>
+      </div>
+    <div class="row">
+    <div class="col l3">
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+    <div class="collapsible-header">Enroll Students</div>
+    <ul class="collapsible-body">
+      <li><input type="checkbox" id="abhay" />
+      <label for="abhay">Abhay Singh Chauhan</label></li>
+    <li><input type="checkbox" id="bhature" />
+      <label for="bhature">Piyush Bhatore</label></li>
+    <li><input type="checkbox" id="divi" />
+      <label for="divi">Divyansh</label></li>
+    </ul>
+    </li>
+  </ul>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="col l3">
+  <h5>Deadlines</h5>
+  <div>
+  <label for="mids"><h6>Midsems</h6></label>
+  <input type="date" class="datepicker" id="mids" />
+  </div>
+  <div>
+  <label for="ends"><h6>Endsems</h6></label>
+  <input type="date" class="datepicker" id="ends" />
+  </div>
+  </div>
+
+
+
+
+  </body>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script
+    >$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    format: 'yyyy-mm-dd'
+  });
+  </script>
+  </html>

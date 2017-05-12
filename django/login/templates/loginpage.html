@@ -1,0 +1,202 @@
+  {% load staticfiles %}
+  {% load socialaccount %}
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="{% static 'css/loginpage.css' %}"  media="screen,projection"/>
+      
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-wrapper  blue lighten-1">
+            <a href="#" class="brand-logo center">Welcome To Feedr</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div class="height"></div>
+           <div class="row">
+                <div class="col l6 m10 s10 offset-l3 offset-m1 offset-s1">       
+                         <div class="row">
+                           <div class="col l10">
+                               <ul class="tabs">
+                                    <li class="tab col l6"><a {% if active.logintab %} class="active"  {% endif %} href="#login">Login</a></li>
+                                    <li class="tab col l6"><a  {% if active.registertab %} class="active" {% endif %} href="#register">Register</a></li>
+                                </ul>
+                            </div>
+                         </div>
+                         
+                         
+                         <div class="row" id="login" >
+                            <div class="row loginside">
+                                <div class="col l12">
+                                    <form action="{% url 'login' %}" method="POST" class="col l12">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="input-field col l8 m10">
+                                                {{loginformobject.username}}
+                                                <label for="first_name">Email-Id</label>
+                                            </div>
+                                        </div>
+                                        <div class="row error">
+                                            <div class="col l6">
+                                                {{loginformobject.username.errors}}
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col l8 m10">
+                                                {{loginformobject.loginpassword}}
+                                                <label for="password">Password</label>
+                                            </div>
+                                        </div>
+                                        <div class="row error">
+                                            <div class="col l6">
+                                                {{loginformobject.loginpassword.errors}}
+                                            </div>
+                                        </div>
+                                        <div class="error">
+                                            <p>{{accesserror}}</p>
+                                        </div>
+                                         <button class="btn waves-effect waves-light " type="submit" name="action">Submit
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="row">
+                                    <div class="col l12 m12 s12 divider"></div>
+                                </div>
+                                 <div class="row">
+                                 <a href="{% provider_login_url "facebook" method="oauth2" %}">
+                                  <button class="btn waves-effect waves-light light-blue btn-large" type="submit" name="action">Login with Facebook
+                                                <i class="material-icons right">send</i>
+                                    </button>
+                                </a>
+                                <a href="{% provider_login_url "google" method="oauth2" %}">
+                                    <button class="btn waves-effect waves-light red btn-large" type="submit" name="action">Login with Google
+                                                <i class="material-icons right">send</i>
+                                    </button>
+                                </a>
+                                </div>
+                            </div>
+                         </div>
+                         
+                            
+                          <div id="register" class="col s12 m12">
+                              <form action="{% url 'registerpage' %}" method="POST" class="col s12">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                    {{register.first_name}}
+                                    <label for="last_name">First Name</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                    {{register.last_name}}
+                                    <label for="first_name">Last Name</label>
+                                    </div>
+                                </div>
+                                <div class="row error">
+                                    {% if register.first_name.errors %}
+                                    <div class="col s6">
+                                    <p class="error">{{register.first_name.errors}}</p>
+                                    </div>
+                                    {% endif %}
+                                     {% if register.last_name.errors %}
+                                    <div class="col s6">
+                                    <p class="error">{{register.last_name.errors}}</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                 <div class="row">
+                                    <div class="input-field col s6">
+                                    {{register.password}}
+                                    <label for="password">Password</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                    <!--<input id="password" type="password" class="validate">-->
+                                    {{register.ConfirmPassword}}
+                                    <label for="password"> Confirm Password</label>
+                                    </div>
+                                </div>
+                                <div class="row error">
+                                    {% if register.password.errors %}
+                                    <div class="col s10">
+                                    <p class="error">{{register.password.errors}}</p>
+                                    </div>
+                                    {% endif %}
+                                    {% if register.ConfirmPassword.errors %}
+                                    <div class="col s6">
+                                    <!--<input id="password" type="password" class="validate">-->
+                                    <p class="error">{{register.Confirm_Password.errors}}</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                     <!--<input type="date" class="datepicker" id="date" placeholder="Birthday">-->
+                                     {{registerprofile.Birthdate}}
+                                    </div>
+                                    <div class="input-field col s6">
+                                    <!--<input id="email" type="email" class="validate">-->
+                                    {{register.email}}
+                                    <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="row error">
+                                    {% if registerprofile.BirthDate.errors %}
+                                    <div class="col s4">
+                                    <p class="error">{{registerprofile.Birthdate.errors}}</p>
+                                    </div>
+                                    {% endif %}
+                                    {% if register.email.errors %}
+                                    <div class="col s8">
+                                    <p class="error">Email-Id already registered</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="row">
+                                    <p>
+                                       {{registerprofile.Gender.0.tag}}
+                                       <label for="id_Gender_0">Male</label>
+                                    </p>
+                                     <p>
+                                       {{registerprofile.Gender.1.tag}}
+                                       <label for="id_Gender_1">Female</label>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    {% if registerprofile.Gender.errors %}
+                                    <div class="col s6">
+                                    <p class="error">{{registerprofile.Gender.errors}}</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                 <button class="btn waves-effect waves-light " type="submit" name="action">Sign Up
+                                            <i class="material-icons right">send</i>
+                                 </button>
+                                 <div class="row">
+                                     <p style="color:blue">{{registered}}</p>
+                                 </div>
+                                </form>
+                          </div>
+            </div>
+           </div>
+  
+    </body>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+    <script
+    >$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    format: 'yyyy-mm-dd'
+  });
+  </script>
+
+  </html>
